@@ -3,20 +3,34 @@ import java.util.Scanner;
 
 public class GameRunner {
     public static void main(String[] args) {
-        BoardGame game = new BoardGame(5, 5);
+        BoardGame game = new BoardGame();
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Welcome to the Board Game!");
-        System.out.println("Use W(up), S(down), A(left), D(right) to move");
+        System.out.println("Welcome to Battleship!");
         
         while (!game.isGameOver()) {
             game.displayBoard();
             System.out.print("Enter your move: ");
-            String move = scanner.nextLine().toUpperCase();
-            game.movePlayer(move);
+            int row = scanner.nextInt();
+            int col = scanner.nextInt();
+
+            game.guessPlayer(row, col);
+
+            //cannot have comma between****
+
+      
+
+
+            
+            
+           
+
+            
+         
+            }
+            
+            
         }
         
-        System.out.println("Game Over!");
-        scanner.close();
+     
     }
-} 

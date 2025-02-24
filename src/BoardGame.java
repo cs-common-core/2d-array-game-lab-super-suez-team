@@ -1,21 +1,34 @@
 package src;
 public class BoardGame {
-    private String[][] board;
+    private int[][] board;
     private int playerRow;
     private int playerCol;
-    
-    public BoardGame(int rows, int cols) {
-        board = new String[rows][cols];
-        // Initialize the board with empty spaces
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                board[i][j] = "-";
+
+
+
+    public BoardGame() {
+        board = new int[10][10];
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                  
+                board[1][1] = 1;
+                board[1][2] = 1;
+                board[1][3] = 1;
+                
+                
+                board[5][2] = 1;
+                board[4][2] = 1;
+                board[3][2] = 1;
+
+                board[9][1] = 1;
+                board[9][2] = 1;
+                board[9][3] = 1;
+                board[9][4] = 1;
+                board[9][5] = 1;
+            
+
             }
         }
-        // Place player at starting position (0,0)
-        playerRow = 0;
-        playerCol = 0;
-        board[playerRow][playerCol] = "P";
     }
     
     public void displayBoard() {
@@ -28,12 +41,33 @@ public class BoardGame {
     }
     
     // Students will implement these methods
-    public void movePlayer(String direction) {
-        // TODO: Implement player movement (up, down, left, right)
+    public void guessPlayer(int playerRow, int playerCol) {
+        if(board[playerRow][playerCol] == 1){
+            System.out.println("it is a hit");
+            board[playerRow][playerCol] = 2;
+
+        }else if(board[playerRow][playerCol] == 2){
+            System.out.println("you have already hit");
+        }else if(board[playerRow][playerCol] == 0){
+            System.out.println("you missed");
+            board[playerRow][playerCol] = 3;
+        }
+        
     }
-    
+
     public boolean isGameOver() {
-        // TODO: Implement win/lose conditions
+            
+        int numOfOnes = 0;
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j< 10; j++){
+                if(board[i][j] == 1){
+                    numOfOnes++;
+                }
+
+            }
+        }
+        
+ 
         return false;
     }
 } 
